@@ -6,6 +6,6 @@ $db = new Database($config['database']);
 $note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
 
 view('notes/show.view.php', [
-    'title' => 'Detail',
+    'title' => htmlspecialchars($note['title']),
     'note' => $note,
 ]);

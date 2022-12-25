@@ -1,10 +1,12 @@
 <?php
 
-$config = require base_path('config.php');
+$config = require(base_path('config.php'));
 $db = new Database($config['database']);
 
-$errors = [];
 $success = '';
+$errors = [];
+
+$note = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -27,16 +29,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $db->query('INSERT INTO notes(title, body) VALUES(:title, :body)', [
+        $db->query('update notes set title=:title, body=:body where id=:id', [
             'title' => $title,
             'body' => $body,
+            'id' => $_GET['id'],
         ]);
-        $success = "Note saved successfully.";
+        $success = "Note updated successfully.";
+        $noteNew = $db->query('select * from notes where id=:id', ['id' => $_GET['id']])->findOrFail();
+
+        view('notes/show.view.php', [
+            'title' => $noteNew['title'],
+            'note' => $noteNew,
+            'success' => $success,
+        ]);
+
+        return;
     }
 }
 
-view('notes/create.view.php', [
-    'title' => 'Add note',
+view('notes/edit.view.php', [
+    'title' => 'Edit note',
+    'note' => $note,
     'errors' => $errors,
-    'success' => $success,
 ]);

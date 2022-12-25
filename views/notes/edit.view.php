@@ -2,28 +2,25 @@
 <?php require(__DIR__.'/../partials/header.php'); ?>
 <main>
     <div class="row justify-content-center">
-        <?php if(isset($success)): ?>
-            <p class="text-success"> <?= $success ?> </p>
-        <?php endif; ?>
-        <div class="col-6 card p-3">
+        <div class="col-6">
             <form action="" method="POST">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" class="form-control" id="title" aria-describedby="title">
+                    <input type="text" name="title" class="form-control" id="title" aria-describedby="title" value="<?= $note['title'] ?>">
                 </div>
                 <?php if(isset($errors['title'])): ?>
                     <p class="text-danger small"> <?= $errors['title'] ?> </p>
                 <?php endif; ?>
                 <div class="mb-3">
-                    <label for="body" class="form-label">Start writing the content of your note</label>
+                    <label for="body" class="form-label">Content</label>
                     <textarea class="form-control" name="body" id="body" rows="3">
-                        <?php $_POST['body'] ?? '' ?>
+                        <?= $note['body'] ?>
                     </textarea>
                 </div>
                 <?php if(isset($errors['body'])): ?>
                     <p class="text-danger small"> <?= $errors['body'] ?> </p>
                 <?php endif; ?>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
