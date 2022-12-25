@@ -4,7 +4,7 @@ return [
     'database' => [
         'host' => 'localhost',
         'port' => 1234,
-        'dbname' => 'php',
+        'dbname' => 'notesphp',
         'charset' => 'utf8mb4',
     ],
 ];

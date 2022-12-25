@@ -2,5 +2,5 @@
 
 return [
     '/' => 'controllers/homeController.php',
-    '/notes/create' => 'controllers/notes/create.php',
+    '/notes/create' => 'controllers/notes/createController.php',
 ];
