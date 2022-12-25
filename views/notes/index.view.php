@@ -5,9 +5,11 @@
         <div class="col-6">
             <ul class="list-group">
                 <?php foreach($notes as $note): ?>
-                    <li class="list-group-item">
-                        <?= htmlspecialchars($note['title']) ?>
-                    </li>
+                    <a href="/note?id=<?= $note['id'] ?>" class="text-body text-decoration-none">
+                        <li class="list-group-item">
+                            <?= htmlspecialchars($note['title']) ?>
+                        </li>
+                    </a>
                 <?php endforeach; ?>
             </ul>
         </div>
