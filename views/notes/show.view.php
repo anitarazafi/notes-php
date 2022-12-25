@@ -17,7 +17,7 @@
                         Edit note
                     </a>
                 </button>
-                <button type="button" class="btn btn-danger">
+                <button type="submit" class="btn btn-danger">
                     <a href="/note/delete?id=<?= $note['id'] ?>" class="text-decoration-none text-white">
                         Delete note
                     </a>

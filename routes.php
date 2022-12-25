@@ -6,4 +6,5 @@ return [
     '/notes/index' => 'controllers/notes/indexController.php',
     '/note' => 'controllers/notes/showController.php',
     '/note/edit' => 'controllers/notes/editController.php',
+    '/note/delete' => 'controllers/notes/deleteController.php',
 ];
